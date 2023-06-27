@@ -29,8 +29,8 @@ class UserResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name'),
-                RichEditor::make('bio'),
-                RichEditor::make('bio')->disableToolbarButtons(['underline']),
+                RichEditor::make('bio_1'),
+                RichEditor::make('bio_2')->disableToolbarButtons(['underline']),
             ])
             ->columns(1);
     }
