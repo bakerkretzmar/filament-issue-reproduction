@@ -7,6 +7,7 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -28,7 +29,10 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name'),
+                TextInput::make('name')
+                    ->extraAttributes(['foo' => 'bar']),
+                Textarea::make('bio')
+                    ->extraAttributes(['foo' => 'bar']),
                 RichEditor::make('bio_1'),
                 RichEditor::make('bio_2')->disableToolbarButtons(['underline']),
             ])
