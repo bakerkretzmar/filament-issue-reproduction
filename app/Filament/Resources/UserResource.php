@@ -13,6 +13,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
+use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -50,6 +52,9 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                ActionGroup::make([
+                    DeleteAction::make(),
+                ])->visible(fn () => (bool) random_int(0, 1)),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
